@@ -23,7 +23,7 @@ int main(int argc, const char* argv[])
     }
 
     const char* disk = argv[1];
-    FILE* fp = fopen(disk, "rwb");
+    FILE* fp = fopen(disk, "a+b");
 
     if(!fp) {
         fprintf(stderr, "could not mount %s: bad path\n", disk);

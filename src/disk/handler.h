@@ -21,9 +21,10 @@ public:
      * Read the specified amount of bytes into the buffer
      * @param buffer byte buffer
      * @param amt amount of bytes to read
+     * @param pos starting byte position in the file
      * @return -1 on error, # of bytes read otherwise
      */
-    virtual int read(char* buffer, int amt) = 0;
+    virtual int read(char* buffer, int amt, int pos) = 0;
 
     /**
      * Write the specified amount of bytes from the buffer
