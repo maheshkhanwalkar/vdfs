@@ -4,10 +4,11 @@
 #include <cstdio>
 
 #include "disk/recognise.h"
+#include "ops/fs_ops.h"
 
-// TODO
 struct fuse_operations opt = {
-
+    .getattr = fs_getattr,
+    .open = fs_open,
 };
 
 /**
@@ -19,6 +20,11 @@ int main(int argc, const char* argv[])
 {
     if(argc < 3) {
         fprintf(stderr, "error. missing mount-point and/or disk image\n");
+        return -1;
+    }
+
+    if(argc > 3) {
+        fprintf(stderr, "error. too many arguments provided. format: vdfs disk.img /where/to/mount\n");
         return -1;
     }
 
@@ -39,6 +45,6 @@ int main(int argc, const char* argv[])
         return -1;
     }
 
-    char* args[2] = {(char*)argv[0], (char*)argv[2]};
-    return (int)fuse_main(2, args, &opt, nullptr);
+    char* args[5] = {(char*)argv[0], (char*)argv[2], "-f", "-s", "-d"};
+    return (int)fuse_main(5, args, &opt, nullptr);
 }
