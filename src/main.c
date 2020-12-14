@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <stdarg.h>
 
+#include "defs.h"
 #include "disk/handler.h"
 
 typedef enum cmd_type {
@@ -15,16 +13,6 @@ typedef struct cmd {
     const char** args;
     size_t arg_count; /* probably can remove */
 } cmd_t;
-
-__attribute__((noreturn))
-static void die(const char* msg, ...)
-{
-    va_list args;
-    va_start(args, msg);
-
-    vfprintf(stderr, msg, args);
-    exit(1);
-}
 
 static cmd_t prep(int argc, const char** argv)
 {

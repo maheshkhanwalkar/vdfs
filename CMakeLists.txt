@@ -6,6 +6,6 @@ set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic -O2")
 
 include_directories(src)
 
-add_executable(vdfs src/main.c src/disk/handler.c src/disk/handler.h)
+add_executable(vdfs src/main.c src/disk/handler.c src/disk/handler.h src/defs.c src/defs.h src/disk/raw.c src/disk/raw.h)
 
 # target_link_libraries(vdfs fuse3)
