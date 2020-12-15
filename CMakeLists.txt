@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
-project(vdfs CXX)
+project(vdfs C)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -O0")
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic -O0")
 
 include_directories(src)
 
-add_executable(vdfs src/main.cpp src/disk/handler.h src/disk/raw/raw_handler.cpp src/disk/raw/raw_handler.h
-        src/disk/recognise.cpp src/disk/recognise.h src/ops/fs_ops.cpp src/ops/fs_ops.h src/part/mbr.h)
+add_executable(vdfs src/main.c src/disk/handler.c src/disk/handler.h
+        src/defs.c src/defs.h src/disk/raw.c src/disk/raw.h src/part/mbr.c src/part/mbr.h)
 
-target_link_libraries(vdfs fuse3)
+# target_link_libraries(vdfs fuse3)
